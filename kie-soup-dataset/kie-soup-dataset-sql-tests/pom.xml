@@ -19,8 +19,6 @@
   </parent>
 
   <artifactId>kie-soup-dataset-sql-tests</artifactId>
-  <packaging>jar</packaging>
-
   <name>KIE Soup SQL Datasets Test</name>
 
   <properties>
@@ -39,10 +37,6 @@
     <maven.jdbc.password />
     <maven.jdbc.url>jdbc:h2:mem:test</maven.jdbc.url>
     <maven.jdbc.schema>public</maven.jdbc.schema>
-
-    <!-- versions for non managed dependencies - this should be changed -->
-    <version.narayana.jta>5.9.0.Final</version.narayana.jta>
-    <version.tomcat.dbcp>9.0.13</version.tomcat.dbcp>
   </properties>
 
   <dependencyManagement>
@@ -50,12 +44,12 @@
       <dependency>
         <groupId>org.jboss.narayana.jta</groupId>
         <artifactId>narayana-jta</artifactId>
-        <version>${version.narayana.jta}</version>
+        <version>${version.org.jboss.narayana.tomcat}</version>
       </dependency>
       <dependency>
         <groupId>org.apache.tomcat</groupId>
         <artifactId>tomcat-dbcp</artifactId>
-        <version>${version.tomcat.dbcp}</version>
+        <version>${version.org.apache.tomcat.tomcat-dbcp}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
@@ -106,7 +100,6 @@
       <artifactId>mockito-core</artifactId>
       <scope>test</scope>
     </dependency>
-
 
     <dependency>
       <groupId>commons-collections</groupId>
@@ -164,18 +157,12 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <version>2.15</version>
         <configuration>
-          <dependenciesToScan>
-            <dependency>org.kie.soup:kie-soup-dataset-sql</dependency>
-          </dependenciesToScan>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <configuration>
           <additionalClasspathElements>
             <additionalClasspathElement>${maven.jdbc.driver.jar}</additionalClasspathElement>
           </additionalClasspathElements>
+          <dependenciesToScan>
+            <dependency>org.kie.soup:kie-soup-dataset-sql</dependency>
+          </dependenciesToScan>
         </configuration>
       </plugin>
       <plugin>
