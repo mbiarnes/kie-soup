@@ -85,6 +85,11 @@ public class MavenProjectLoaderTest {
         assertEquals(VERSION, dependencyArtifact.getVersion());
         
     }
+  
+    @Test
+    public void myFailingTest() {
+        org.junit.Assert.fail("Failure programmed by michael");
+    }    
 
     static String settings(String localRepo) {
         return  "<settings xmlns=\"http://maven.apache.org/SETTINGS/1.0.0\"\n" +
