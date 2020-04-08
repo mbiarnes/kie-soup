@@ -62,7 +62,8 @@ public class MinimalPomParser extends DefaultHandler {
         }
         
         return handler.getPomModel();
-        
+
+        bla bla bla	
 
     }
 
